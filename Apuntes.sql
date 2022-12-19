@@ -159,9 +159,24 @@ SELECT u.id, u.email, p.name FROM usuarios u right join  products p on u.id = p.
 
 SELECT u.id, u.email, p.name FROM usuarios u inner join  products p on u.id = p.created_by;
 
+-- CROSS JOIN
+-- devuelve el producto cartesiano de las dos tablas a--> a,b,c,d // b--> a,b,c,d etc
 
+-- Group by
+-- Sirve para agrupar elementos
 
+SELECT count(id), marca FROM product GROUP BY marca ---> 6 'apple'
 
+SELECT count(p.id) , u.name FROM product p left join usuario u on u.id = p.created_by GROUP BY p.created_by
 
+-- Puedo colocarle condiciones para que me devuelva solo los datos que yo considero relevantesçç
+-- Por ejemplo que solo me devuelva los usuarios que tienen 2 o más productos
 
+SELECT count(p.id) , u.name FROM product p left join usuario u 
+on u.id = p.created_by GROUP BY p.created_by
+having count(p.id) >= 2
+
+-- Eliminar tablas
+
+DROP TABLE products;
 
